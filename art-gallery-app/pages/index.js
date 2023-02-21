@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import Spotlight from "../component/Spotlight";
 
 export default function HomePage() {
   return (
