@@ -1,7 +1,9 @@
+import useSWR from "swr";
+
 export default function HomePage() {
   return (
     <div>
-      <h1>Hello from Next.js</h1>
+      <h1>HomePage</h1>
     </div>
   );
 }
