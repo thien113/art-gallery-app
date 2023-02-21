@@ -1,10 +1,10 @@
-import useSWR from "swr";
+import Spotlight from "../component/spotlight/Spotlight";
 
-export default function HomePage() {
+export default function SpotlightPage({ pieces }) {
   return (
     <div>
       <h1>Pieces of the Day</h1>
-      <Spotlight/>
+      <Spotlight pieces={pieces} />
     </div>
   );
 }

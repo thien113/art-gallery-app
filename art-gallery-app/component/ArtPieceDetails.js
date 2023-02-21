@@ -9,6 +9,5 @@ export default function ArtPieceDetails({image, title, artist, year, genre}) {
             <div className="details__year">{year}</div>
             <div className="details_genre">{genre}</div>
         </>
-
     )
 }
