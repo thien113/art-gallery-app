@@ -12,8 +12,8 @@ export default function Spotlight({ image, artist }) {
   return (
     <div>
       <h2 className="pieces__header">Piece of the Day</h2>
-      <img className="pieces__image" source={randomImage} />
-      <h3>{artist}</h3>
+      <img className="pieces__image" source={image}/>
+      <h3 className="pieces__artist">{artist}</h3>
     </div>
   );
 }

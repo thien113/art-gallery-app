@@ -7,7 +7,7 @@ export default function PiecesPage() {
   );
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-
+    console.log(data)
   return (
     <>
       <ArtPieces pieces={data} />
