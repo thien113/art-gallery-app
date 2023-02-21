@@ -1,19 +1,22 @@
-import { useState } from "react";
-import "./Spotlight.css";
+import useSWR from "swr";
+import Image from "next/image";
 
-export default function Spotlight({ image, artist }) {
-  const [currentImage, setCurrentImage] = useState(0);
+export default function Spotlight() {
+  const { data, error, isLoading } = useSWR(
+    "https://example-apis.vercel.app/api/art"
+  );
 
-  function getRandomImg(image) {
-    const randomImage =  Math.floor(Math.random() * image.length);
-    setCurrentImage({currentImage: randomImage})
-  } 
-
+  if (error) return <div>{error.message}</div>;
+  if (isLoading) return <div>loading...</div>;
+  
+    const randomIndex =  Math.floor(Math.random() *data.length);
+    const randomImageObject = data[randomIndex]
+  
   return (
     <div>
-      <h2 className="pieces__header">Piece of the Day</h2>
-      <img className="pieces__image" source={image}/>
-      <h3 className="pieces__artist">{artist}</h3>
+      
+      <Image className="pieces__image" src={randomImageObject.imageSource} width={400} height={500} alt="piece of the day"/>
+      <h3 className="pieces__artist">{randomImageObject.artist}</h3>
     </div>
   );
 }
