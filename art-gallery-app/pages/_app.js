@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
         ];
       } else {
         artPieceLike.isFavorite = !artPieceLike.isFavorite;
-        return draft
+        return draft;
       }
     });
   }
@@ -60,7 +60,6 @@ export default function App({ Component, pageProps }) {
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
         onSubmitHandler={onSubmitHandler}
-        artPiecesInfo={artPiecesInfo}
       />
     </>
   );
