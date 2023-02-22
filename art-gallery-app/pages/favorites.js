@@ -1,19 +1,32 @@
-import ArtPieceDetails from "../component/ArtPieceDetails";
+import ArtPiecePreview from "../component/art-piece/ArtPiecePreview";
 
-export default function FavoriteFilter({ artPiecesInfo }) {
+export default function FavoriteFilter({
+  artPiecesInfo,
+  onToggleFavorite,
+  pieces,
+}) {
+  const favorites = pieces.filter((piece) => {
+    return artPiecesInfo.find(
+      (info) => info.slug === piece.slug && info.isFavorite
+    );
+  });
   return (
     <>
       <h2>My Favorites</h2>
-      {artPiecesInfo
-        .filter((artPieceInfo) => artPieceInfo.isFavorite === true)
-        .map((favoritePieces) => (
-          <>
-            {/* <ArtPieceDetails title={favoritePieces.title} slug={favoritePieces.slug} /> */}
-            <h2>{favoritePieces.title}</h2>
-            <h3>{favoritePieces.artist}</h3>
-            <div>{favoritePieces.slug}</div>
-          </>
-        ))}
+      {favorites.map((piece) => {
+        return (
+          <li>
+            <ArtPiecePreview
+              key={piece.slug}
+              title={piece.name}
+              artist={piece.artist}
+              image={piece.imageSource}
+              alt={piece.slug}
+              onToggleFavorite={onToggleFavorite}
+            />
+          </li>
+        );
+      })}
     </>
   );
 }
