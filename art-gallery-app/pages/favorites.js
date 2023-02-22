@@ -15,14 +15,14 @@ export default function FavoriteFilter({
       <h2>My Favorites</h2>
       {favorites.map((piece) => {
         return (
-          <li>
+          <li key={piece.slug}>
             <ArtPiecePreview
-              key={piece.slug}
+              onToggleFavorite={onToggleFavorite}
+              image={piece.imageSource}
               title={piece.name}
               artist={piece.artist}
-              image={piece.imageSource}
-              alt={piece.slug}
-              onToggleFavorite={onToggleFavorite}
+              alt={piece.name}
+              slug={piece.slug}
             />
           </li>
         );
