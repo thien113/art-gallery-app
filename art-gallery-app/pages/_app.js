@@ -3,7 +3,6 @@ import useSWR from "swr";
 import Layout from "../component/layout/Layout";
 import { useImmer } from "use-immer";
 
-
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
@@ -15,8 +14,7 @@ export default function App({ Component, pageProps }) {
   );
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-  console.log(data);
-  
+
   function handleToggleFavorite(slug) {
     updateArtPiecesInforename((draft) => {
       const artPieceLike = draft.find((piece) => piece.slug === slug);
@@ -30,11 +28,27 @@ export default function App({ Component, pageProps }) {
         ];
       } else {
         artPieceLike.isFavorite = !artPieceLike.isFavorite;
-        return draft
+        return draft;
       }
     });
   }
-
+  function onSubmitHandler(slug, comment) {
+    updateArtPiecesInfo((draft) => {
+      const artPieceComment = draft.find((piece) => piece.slug === slug);
+      if (!artPieceComment) {
+        return [
+          ...draft,
+          {
+            slug,
+            isFavorite,
+            comments: [comment],
+          },
+        ];
+      } else {
+        artPieceComment.comments.push(comment);
+      }
+    });
+  }
   console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
@@ -45,6 +59,7 @@ export default function App({ Component, pageProps }) {
         pieces={data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
+        onSubmitHandler={onSubmitHandler}
       />
     </>
   );
