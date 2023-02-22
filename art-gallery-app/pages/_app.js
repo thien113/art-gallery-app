@@ -58,7 +58,6 @@ export default function App({ Component, pageProps }) {
     });
   }
 
-  console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
       <Layout />
