@@ -1,4 +1,5 @@
 import Spotlight from "../component/spotlight/Spotlight";
+// import GlobalStyle from "../styles";
 
 export default function SpotlightPage({ onToggleFavorite, pieces }) {
   return (
