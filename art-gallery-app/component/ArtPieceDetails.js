@@ -4,7 +4,7 @@ import CommentForm from "./comment/CommentForm";
 import Comments from "./comment/Comments";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
 
-export default function ArtPieceDetails({ pieces, id }) {
+export default function ArtPieceDetails({ pieces, id, onToggleFavorite }) {
   const artPieceObject = pieces.find((piece) => piece.slug === id);
 
   return (
@@ -14,14 +14,17 @@ export default function ArtPieceDetails({ pieces, id }) {
         src={artPieceObject.imageSource}
         width={500}
         height={400}
-        alt={artPieceObject.title}
+        alt={artPieceObject.slug}
       ></Image>
       <h2 className="details__title">{artPieceObject.title}</h2>
       <h3 className="details__artist">{artPieceObject.artist}</h3>
       <div className="details__year">{artPieceObject.year}</div>
       <div className="details_genre">{artPieceObject.genre}</div>
       <Link href="/art-pieces">Back</Link>
-      <FavoriteButton slug={artPieceObject.slug} />
+      <FavoriteButton
+        slug={artPieceObject.slug}
+        onToggleFavorite={onToggleFavorite}
+      />
       <Comments />
       <CommentForm />
     </>
