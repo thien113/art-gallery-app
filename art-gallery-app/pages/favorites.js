@@ -26,17 +26,6 @@ export default function FavoriteFilter({
             />
           </li>
         );
-
-        {
-          /* <ArtPiecePreview
-              onToggleFavorite={onToggleFavorite}
-              image={piece.imageSource}
-              title={piece.name}
-              artist={piece.artist}
-              alt={piece.name}
-              slug={piece.slug}
-            /> */
-        }
       })}
     </>
   );
