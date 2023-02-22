@@ -29,6 +29,7 @@ export default function ArtPieceDetails({
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
+      <Comments id={artPieceObject.slug} />
       <CommentForm
         slug={artPieceObject.slug}
         onSubmitHandler={onSubmitHandler}

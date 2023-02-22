@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
   );
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-  console.log(data);
 
   function handleToggleFavorite(slug) {
     updateArtPiecesInforename((draft) => {
@@ -49,7 +48,6 @@ export default function App({ Component, pageProps }) {
       }
     });
   }
-
   console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
@@ -60,6 +58,7 @@ export default function App({ Component, pageProps }) {
         pieces={data}
         onToggleFavorite={handleToggleFavorite}
         onSubmitHandler={onSubmitHandler}
+        artPiecesInfo={artPiecesInfo}
       />
     </>
   );
