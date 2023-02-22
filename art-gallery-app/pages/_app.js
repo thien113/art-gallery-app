@@ -1,13 +1,18 @@
 import GlobalStyle from "../styles";
+import "./styles.css"
 import useSWR from "swr";
 import Layout from "../component/layout/Layout";
 import { useImmer } from "use-immer";
-import "./styles.css"
+import { useImmerLocalStorageState } from "./useImmerLocalStorageState";
+
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [artPiecesInfo, updateArtPiecesInfo] = useImmer([]);
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
 
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
@@ -27,6 +32,7 @@ export default function App({ Component, pageProps }) {
           {
             slug,
             isFavorite: true,
+            comments: [],
           },
         ];
       } else {
@@ -55,7 +61,6 @@ export default function App({ Component, pageProps }) {
     });
   }
 
-  console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
       <Layout />

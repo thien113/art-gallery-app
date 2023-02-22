@@ -1,9 +1,14 @@
 import ArtPieceDetails from "../../../component/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-export default function renderArtPiece({ pieces, artPiecesInfo, onSubmitHandler }) {
+export default function renderArtPiece({ pieces, onSubmitHandler }) {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(artPiecesInfo)
-  return <ArtPieceDetails id={slug} pieces={pieces} onSubmitHandler={onSubmitHandler}/>;
+  return (
+    <ArtPieceDetails
+      id={slug}
+      pieces={pieces}
+      onSubmitHandler={onSubmitHandler}
+    />
+  );
 }

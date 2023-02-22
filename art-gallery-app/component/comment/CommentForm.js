@@ -1,10 +1,8 @@
 export default function CommentForm({ onSubmitHandler, slug }) {
-
   function handleSubmit(event) {
-
     event.preventDefault();
     const comment = event.target.comment.value;
-    onSubmitHandler(comment, slug);
+    onSubmitHandler(slug, comment);
     event.target.reset();
     event.target.elements.comment.focus();
   }
