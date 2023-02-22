@@ -9,9 +9,8 @@ export default function Spotlight({ pieces, onToggleFavorite }) {
     .shift().isFavorite;
 
   return (
-    <div>
+    <div className="preview__container">
       <Image
-        className="pieces__image"
         src={randomImageObject.imageSource}
         width={400}
         height={500}

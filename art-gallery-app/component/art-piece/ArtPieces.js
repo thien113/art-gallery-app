@@ -3,9 +3,10 @@ import ArtPiecePreview from "./ArtPiecePreview";
 export default function ArtPieces({ pieces, onToggleFavorite }) {
   return (
     <>
-      <ul>
+        <h2 className="header__highlight"> All Art Pieces</h2> 
+      <ul className="details__container">
         {pieces.map((piece) => (
-          <li key={piece.slug}>
+          <li className="details__container" key={piece.slug}>
             <ArtPiecePreview
               onToggleFavorite={onToggleFavorite}
               image={piece.imageSource}
