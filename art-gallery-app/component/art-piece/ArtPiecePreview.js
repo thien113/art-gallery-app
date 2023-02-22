@@ -9,7 +9,6 @@ export default function ArtPiecePreview({
   artist,
   slug,
 }) {
-
   return (
     <>
       <Link href={`/art-pieces/${slug}`}>
