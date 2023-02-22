@@ -1,7 +1,6 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 
 export default function ArtPieces({ pieces, onToggleFavorite }) {
-  const isFavorite = JSON.parse(localStorage.getItem("art-pieces-info"));
   return (
     <>
       <ul>

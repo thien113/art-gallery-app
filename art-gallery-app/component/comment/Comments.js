@@ -6,7 +6,11 @@ export default function Comments({ id }) {
     <>
       <h4>Comments: </h4>
       {comments.map((comment) => (
-        <p>{comment}</p>
+        <>
+          <p>{comment.comment}</p>
+          <p>{comment.day}</p>
+          <p>{comment.time}</p>
+        </>
       ))}
     </>
   );
