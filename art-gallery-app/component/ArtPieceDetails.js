@@ -16,10 +16,10 @@ export default function ArtPieceDetails({
   return (
     <>
       <Image
-        className="details__container"
+        className="preview__image"
         src={artPieceObject.imageSource}
-        width={500}
-        height={400}
+        width={400}
+        height={500}
         alt={artPieceObject.slug}
       ></Image>
       <div className="preview__container"> 
