@@ -9,8 +9,6 @@ export default function ArtPieceDetails({
   id,
   onToggleFavorite,
   onSubmitHandler,
-  artPiecesInfo
-
 }) {
   const artPieceObject = pieces.find((piece) => piece.slug === id);
   return (
@@ -31,11 +29,10 @@ export default function ArtPieceDetails({
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
-      <Comments id={artPieceObject.slug} artPiecesInfo={artPiecesInfo} />
+      <Comments id={artPieceObject.slug} />
       <CommentForm
         slug={artPieceObject.slug}
         onSubmitHandler={onSubmitHandler}
-        artPiecesInfo={artPiecesInfo}
       />
     </>
   );
