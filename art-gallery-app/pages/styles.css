@@ -1,4 +1,9 @@
-.header__homepage{
+:root {
+  --accent:	#FE1C80;
+  --accent-light: #e53e89b1;
+  }
+  
+  .header__homepage{
   display: flex;
   justify-content: flex-start;
   padding-left: 30px;
@@ -53,29 +58,50 @@
   letter-spacing: 0.2rem;
   color: gray;
 }
+.nav__back{
+  list-style-type: none;
+  text-decoration: none;
+  color: gray;
+  padding-left: 30px ;
+  padding: 20px;
+  border: 10px;
 
-.nav__link:hover {
-  color: #ff1493;
 }
-
-
+.nav__link:hover,
+.nav__back:hover {
+  color: var(--accent);
+}
+.nav__back:hover{
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
 .details__container {
+    list-style-type: none;
+    /* display: flex;
+    flex-flow: column; */
+    margin-bottom: 10%;
+  }
+
+  .details__container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+  }
+/* .details__container {
   display: block;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
   text-align: center;
   list-style-type: none;
-  margin-bottom: 10%;
-
-}
-.piece_of_day{
-  display: flex;
-  justify-content: center;
-}
-.preview__image, 
-.piece_of_day {
+} */
+.preview__image{
   object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .preview__container {
@@ -83,6 +109,8 @@
   justify-content: center;
   column-gap: 1rem;
   padding: 10px;
+  row-gap: 10px;
+  
 }
 
 .preview__title{
@@ -92,6 +120,16 @@
 .preview__artist{
   font-size: 0.9rem;
   font-weight: 300;
+}
+
+.preview__year{
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: gray;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
 }
 .button{
   float: right;
@@ -104,3 +142,46 @@
   filter: invert(22%) sepia(79%) saturate(2984%) hue-rotate(312deg) brightness(101%) contrast(111%);
 }
 
+.form__comment {
+  padding: 10%;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin:10%;
+  border-radius: 30px;
+  padding-top: 20px ;
+}
+
+.form__label, 
+.form__button {
+  font-size: 0.9rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+
+}
+.form__button {
+  position: static;
+  border: none;
+  background-color: white;
+  padding: 0.9rem;
+  position:relative;
+  border-radius: 20px;
+}
+
+.form__input{
+  height: 90px;
+  border-radius: 20px;
+  border: solid 0.03rem;
+}
+
+.form__button:hover{
+  box-shadow: var(--accent-light) 2px 3px 3px;
+  color:var(--accent-light);
+}
+
+.new__comment{
+  color:var(--accent);
+  font-style: italic;
+  padding-left: 85%;
+}

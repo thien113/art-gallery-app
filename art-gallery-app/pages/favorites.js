@@ -17,9 +17,8 @@ export default function FavoriteFilter({
 
       {favorites.map((piece) => {
         return (
-          <li>
+          <li key={piece.slug}>
             <ArtPiecePreview
-              key={piece.slug}
               title={piece.name}
               artist={piece.artist}
               image={piece.imageSource} className="preview__image"

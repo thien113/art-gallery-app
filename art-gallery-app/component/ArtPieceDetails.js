@@ -22,11 +22,15 @@ export default function ArtPieceDetails({
         height={400}
         alt={artPieceObject.slug}
       ></Image>
-      <h2 className="details__title">{artPieceObject.title}</h2>
-      <h3 className="details__artist">{artPieceObject.artist}</h3>
-      <div className="details__year">{artPieceObject.year}</div>
-      <div className="details_genre">{artPieceObject.genre}</div>
-      <Link href="/art-pieces">Back</Link>
+      <div className="preview__container"> 
+
+      <section className="preview__title">{artPieceObject.name}</section>
+      <section className="preview__artist">{artPieceObject.artist}</section>
+      <div className="preview__year">
+      <section >{artPieceObject.year}</section>
+      <section >{artPieceObject.genre}</section>
+      </div>
+      </div>
       <FavoriteButton
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
@@ -36,6 +40,7 @@ export default function ArtPieceDetails({
         slug={artPieceObject.slug}
         onSubmitHandler={onSubmitHandler}
       />
+      <Link className="nav__back" href="/art-pieces">Back to All Artpieces</Link>
     </>
   );
 }

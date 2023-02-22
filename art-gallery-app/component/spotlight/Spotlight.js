@@ -8,7 +8,7 @@ export default function Spotlight({ pieces, onToggleFavorite }) {
   return (
     <>
       <Image
-      className="image"
+      className="preview__image"
         src={randomImageObject.imageSource}
         width={400}
         height={500}
@@ -19,10 +19,10 @@ export default function Spotlight({ pieces, onToggleFavorite }) {
         <section className="preview__artist">
           {randomImageObject.artist}
         </section>
-        <FavoriteButton
+        {/* <FavoriteButton
           onToggleFavorite={onToggleFavorite}
           slug={randomImageObject.slug}
-        />
+        /> */}
       </div>
     </>
   );

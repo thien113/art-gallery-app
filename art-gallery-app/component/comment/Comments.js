@@ -4,9 +4,9 @@ export default function Comments({ id }) {
     .shift().comments;
   return (
     <>
-      <h4>Comments: </h4>
+      <h4 className="header__comment"></h4>
       {comments.map((comment) => (
-        <p>{comment}</p>
+        <p className="new__comment">{comment}</p>
       ))}
     </>
   );
