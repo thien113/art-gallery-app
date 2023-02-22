@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }) {
         ];
       } else {
         artPieceLike.isFavorite = !artPieceLike.isFavorite;
+        return draft
       }
     });
   }
@@ -42,6 +43,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         pieces={data}
+        artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
       />
     </>
