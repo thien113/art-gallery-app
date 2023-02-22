@@ -4,9 +4,13 @@ import CommentForm from "./comment/CommentForm";
 import Comments from "./comment/Comments";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
 
-export default function ArtPieceDetails({ pieces, id, onToggleFavorite }) {
+export default function ArtPieceDetails({
+  pieces,
+  id,
+  onToggleFavorite,
+  onSubmitHandler,
+}) {
   const artPieceObject = pieces.find((piece) => piece.slug === id);
-
   return (
     <>
       <Image
@@ -25,8 +29,10 @@ export default function ArtPieceDetails({ pieces, id, onToggleFavorite }) {
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
-      <Comments />
-      <CommentForm />
+      <CommentForm
+        slug={artPieceObject.slug}
+        onSubmitHandler={onSubmitHandler}
+      />
     </>
   );
 }
