@@ -9,8 +9,7 @@ export default function ArtPieceDetails({
   id,
   onToggleFavorite,
   onSubmitHandler,
-  artPiecesInfo
-
+  artPiecesInfo,
 }) {
   const artPieceObject = pieces.find((piece) => piece.slug === id);
   return (
