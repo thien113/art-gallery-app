@@ -10,6 +10,8 @@ export default function ArtPieceDetails({
   onToggleFavorite,
   onSubmitHandler,
 }) {
+  const localItems = JSON.parse(localStorage.getItem("art-pieces-info"));
+
   const artPieceObject = pieces.find((piece) => piece.slug === id);
   return (
     <>
@@ -29,7 +31,7 @@ export default function ArtPieceDetails({
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
-      <Comments id={artPieceObject.slug} />
+      {localItems != false && <Comments id={artPieceObject.slug} />}
       <CommentForm
         slug={artPieceObject.slug}
         onSubmitHandler={onSubmitHandler}
