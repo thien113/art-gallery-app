@@ -1,7 +1,10 @@
 import GlobalStyle from "../styles";
+import "./styles.css"
 import useSWR from "swr";
 import Layout from "../component/layout/Layout";
+import { useImmer } from "use-immer";
 import { useImmerLocalStorageState } from "./useImmerLocalStorageState";
+
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
