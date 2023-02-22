@@ -1,17 +1,25 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import FavoriteButton from "./FavoriteButton/FavoriteButton";
 
-export default function ArtPieceDetails({pieces, id}) {
-const artPieceObject = pieces.find((piece) => piece.slug === id )
+export default function ArtPieceDetails({ pieces, id, onToggleFavorite }) {
+  const artPieceObject = pieces.find((piece) => piece.slug === id);
 
-    return (
-        <>
-            <Image className="details__image" src={artPieceObject.imageSource} width={400} height={500}></Image>
-            <h2 className="details__title">{artPieceObject.title}</h2>
-            <h3 className="details__artist">{artPieceObject.artist}</h3>
-            <div className="details__year">{artPieceObject.year}</div>
-            <div className="details_genre">{artPieceObject.genre}</div>
-            <Link href="/art-pieces">Back</Link>
-        </>
-    )
+  return (
+    <>
+      <Image
+        className="details__image"
+        src={artPieceObject.imageSource}
+        width={500}
+        height={400}
+        alt={artPieceObject.slug}
+      ></Image>
+      <h2 className="details__title">{artPieceObject.title}</h2>
+      <h3 className="details__artist">{artPieceObject.artist}</h3>
+      <div className="details__year">{artPieceObject.year}</div>
+      <div className="details_genre">{artPieceObject.genre}</div>
+      <Link href="/art-pieces">Back</Link>
+      <FavoriteButton onToggleFavorite={onToggleFavorite} />
+    </>
+  );
 }
