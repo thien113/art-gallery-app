@@ -12,11 +12,13 @@ export default function ArtPiecePreview({
   return (
     <>
       <Link href={`/art-pieces/${slug}`}>
-        <Image src={image} height={400} width={500} alt={title} />
+        <Image className="preview__image" src={image} height={500} width={500} alt={title} />
       </Link>
-      <h1>{title}</h1>
-      <h3>{artist}</h3>
+      <div className="preview__container">
+      <h2 className="preview__title">{title}</h2>
+      <h3 className="preview__artist">{artist}</h3>
       <FavoriteButton onToggleFavorite={onToggleFavorite} slug={slug} />
+      </div>
     </>
   );
 }
