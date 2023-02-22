@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import CommentForm from "./comment/CommentForm";
+import Comments from "./comment/Comments";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
 
 export default function ArtPieceDetails({ pieces, id }) {
@@ -20,6 +22,8 @@ export default function ArtPieceDetails({ pieces, id }) {
       <div className="details_genre">{artPieceObject.genre}</div>
       <Link href="/art-pieces">Back</Link>
       <FavoriteButton slug={artPieceObject.slug} />
+      <Comments />
+      <CommentForm />
     </>
   );
 }
