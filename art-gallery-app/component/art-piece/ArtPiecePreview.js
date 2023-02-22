@@ -9,6 +9,9 @@ export default function ArtPiecePreview({
   artist,
   slug,
 }) {
+  const isFavorite = JSON.parse(localStorage.getItem("art-pieces-info"))
+    .filter((obj) => obj.slug === slug)
+    .shift().isFavorite;
   return (
     <>
       <Link href={`/art-pieces/${slug}`}>
@@ -16,7 +19,11 @@ export default function ArtPiecePreview({
       </Link>
       <h1>{title}</h1>
       <h3>{artist}</h3>
-      <FavoriteButton onToggleFavorite={onToggleFavorite} slug={slug} />
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        slug={slug}
+      />
     </>
   );
 }
