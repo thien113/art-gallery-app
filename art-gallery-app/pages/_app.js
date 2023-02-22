@@ -7,7 +7,7 @@ import { useImmer } from "use-immer";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [artPiecesInfo, updateArtPiecesInfo] = useImmer([]);
+  const [artPiecesInfo, updateArtPiecesInforename] = useImmer([]);
 
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
   console.log(data);
   
   function handleToggleFavorite(slug) {
-    updateArtPiecesInfo((draft) => {
+    updateArtPiecesInforename((draft) => {
       const artPieceLike = draft.find((piece) => piece.slug === slug);
       if (!artPieceLike) {
         return [
