@@ -9,19 +9,6 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function App({ Component, pageProps }) {
   const [artPiecesInfo, updateArtPiecesInfo] = useImmer([]);
 
-  function handleToggleFavorite() {
-    console.log("clicked");
-    // updateArtPiecesInfo((draft) => {
-    //   const slugObject = draft.find((artPiecesInfo) => artPiecesInfo.slug === slug)
-    //   if(slugObject){
-    //     draft.isFavorite = !isFavorite;
-    //   } else {
-    //     draft.slug = slug;
-    //     draft.isFavorite = true
-    //   }
-    // })
-  }
-
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher
@@ -29,7 +16,25 @@ export default function App({ Component, pageProps }) {
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
   console.log(data);
+  
+  function handleToggleFavorite(slug) {
+    updateArtPiecesInfo((draft) => {
+      const artPieceLike = draft.find((piece) => piece.slug === slug);
+      if (!artPieceLike) {
+        return [
+          ...draft,
+          {
+            slug,
+            isFavorite: true,
+          },
+        ];
+      } else {
+        artPieceLike.isFavorite = !artPieceLike.isFavorite;
+      }
+    });
+  }
 
+  console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
       <Layout />
