@@ -1,5 +1,7 @@
 // import ArtPieces from "./ArtPieces";
-// import { render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+
+test("should ", () => {});
 
 // const dummyArtPieces = [
 //   {
@@ -121,12 +123,17 @@
 //     dimensions: { height: 2880, width: 1920, type: "jpg" },
 //   },
 // ];
+
+// const dummyToggle = () => {
+//   is (true) ?? !true : true;
+// };
+
 // test("should render an unodered list of art Pieces with image, title, artist and slug", () => {
-//   render(<ArtPieces pieces={dummyArtPieces} />);
+//   render(<ArtPieces pieces={dummyArtPieces} onToggleFavorite={dummyToggle} />);
 //   const unorderdListOfArtPieces = screen.getByRole("list");
 //   expect(unorderdListOfArtPieces).toBeInTheDocument();
 // });
 
-test("should ", () => {
-  expect().toBe();
-});
+// test("should ", () => {
+//   expect().toBe();
+// });
