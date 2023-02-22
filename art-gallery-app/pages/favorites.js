@@ -12,7 +12,9 @@ export default function FavoriteFilter({
   });
   return (
     <>
-      <h2>My Favorites</h2>
+      <h2 className="header__highlight">My Favorites</h2>
+      <ul className="details__container">
+
       {favorites.map((piece) => {
         return (
           <li key={piece.slug}>
@@ -21,12 +23,18 @@ export default function FavoriteFilter({
               image={piece.imageSource}
               title={piece.name}
               artist={piece.artist}
+
+              image={piece.imageSource} className="preview__image"
+              alt={piece.slug}
+              onToggleFavorite={onToggleFavorite}
               alt={piece.name}
               slug={piece.slug}
+
             />
           </li>
         );
       })}
+      </ul>
     </>
   );
 }

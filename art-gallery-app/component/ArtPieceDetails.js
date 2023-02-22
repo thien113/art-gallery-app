@@ -20,7 +20,7 @@ export default function ArtPieceDetails({
   return (
     <>
       <Image
-        className="details__image"
+        className="details__container"
         src={artPieceObject.imageSource}
         width={500}
         height={400}
