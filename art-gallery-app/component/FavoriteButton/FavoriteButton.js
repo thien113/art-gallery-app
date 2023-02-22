@@ -6,7 +6,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite, slug }) {
   if (!isFavorite) {
     return (
       <Heart
-        className="button__favorite-unactive"
+        className="button button__favorite--unactive"
         width="50"
         height="50"
         onClick={() => {
@@ -16,7 +16,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite, slug }) {
     );
   } else {
     <HeartFilled
-      className="button__favorite-active"
+      className="button__favorite--active"
       width="50"
       height="auto"
       onClick={() => {

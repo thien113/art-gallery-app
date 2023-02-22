@@ -63,6 +63,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <h1 className="header__homepage">art gallery</h1>
       <Layout />
       <GlobalStyle />
       <Component

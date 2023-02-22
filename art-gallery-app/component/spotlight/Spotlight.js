@@ -6,15 +6,24 @@ export default function Spotlight({ pieces, onToggleFavorite }) {
   const randomImageObject = pieces[randomIndex];
 
   return (
-    <div className="preview__container">
+    <>
       <Image
+      className="image"
         src={randomImageObject.imageSource}
         width={400}
         height={500}
         alt="piece of the day"
       />
-      <h3 className="pieces__artist">{randomImageObject.artist}</h3>
-      <FavoriteButton onToggleFavorite={onToggleFavorite} slug={randomImageObject.slug}/>
-    </div>
+      <div className="preview__container">
+        <section className="preview__title">{randomImageObject.name}</section>
+        <section className="preview__artist">
+          {randomImageObject.artist}
+        </section>
+        <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          slug={randomImageObject.slug}
+        />
+      </div>
+    </>
   );
 }
