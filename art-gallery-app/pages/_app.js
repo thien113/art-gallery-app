@@ -6,7 +6,7 @@ import { useImmer } from "use-immer";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [artPiecesInfo, updateArtPiecesInforename] = useImmer([]);
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmer([]);
 
   const { data, error, isLoading } = useSWR(
     "https://example-apis.vercel.app/api/art",
@@ -15,8 +15,10 @@ export default function App({ Component, pageProps }) {
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
 
+  const pieces = data;
+
   function handleToggleFavorite(slug) {
-    updateArtPiecesInforename((draft) => {
+    updateArtPiecesInfo((draft) => {
       const artPieceLike = draft.find((piece) => piece.slug === slug);
       if (!artPieceLike) {
         return [
@@ -32,6 +34,7 @@ export default function App({ Component, pageProps }) {
       }
     });
   }
+
   function onSubmitHandler(slug, comment) {
     updateArtPiecesInfo((draft) => {
       const artPieceComment = draft.find((piece) => piece.slug === slug);
@@ -40,15 +43,17 @@ export default function App({ Component, pageProps }) {
           ...draft,
           {
             slug,
-            isFavorite,
+            isFavorite: false,
             comments: [comment],
           },
         ];
       } else {
         artPieceComment.comments.push(comment);
+        return draft;
       }
     });
   }
+
   console.log("clicked_______trigger boolean", artPiecesInfo);
   return (
     <>
@@ -56,7 +61,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        pieces={data}
+        pieces={pieces}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
         onSubmitHandler={onSubmitHandler}

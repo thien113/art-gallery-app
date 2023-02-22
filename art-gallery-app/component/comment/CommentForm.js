@@ -1,5 +1,7 @@
 export default function CommentForm({ onSubmitHandler, slug }) {
+
   function handleSubmit(event) {
+
     event.preventDefault();
     const comment = event.target.comment.value;
     onSubmitHandler(comment, slug);
