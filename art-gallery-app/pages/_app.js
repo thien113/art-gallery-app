@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Layout from "../component/layout/Layout";
 import { useImmer } from "use-immer";
+import "./styles.css"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
