@@ -1,9 +1,10 @@
-import ArtPieces from "../../component/art-piece/ArtPiece";
+import ArtPieces from "../../component/art-piece/ArtPieces";
 
-export default function GalleryPage({ pieces }) {
+export default function GalleryPage({ pieces, onToggleFavorite }) {
+
   return (
     <>
-      <ArtPieces pieces={pieces} />
+      <ArtPieces onToggleFavorite={onToggleFavorite} pieces={pieces} />
     </>
   );
 }
