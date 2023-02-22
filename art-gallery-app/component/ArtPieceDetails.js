@@ -3,6 +3,7 @@ import Link from "next/link";
 import CommentForm from "./comment/CommentForm";
 import Comments from "./comment/Comments";
 import FavoriteButton from "./FavoriteButton/FavoriteButton";
+import styled from "styled-components";
 
 export default function ArtPieceDetails({
   pieces,
@@ -14,7 +15,6 @@ export default function ArtPieceDetails({
   const isFavorite = JSON.parse(localStorage.getItem("art-pieces-info"))
     .filter((obj) => obj.slug === id)
     .shift().isFavorite;
-
   const artPieceObject = pieces.find((piece) => piece.slug === id);
 
   return (
@@ -30,6 +30,10 @@ export default function ArtPieceDetails({
       <h3 className="details__artist">{artPieceObject.artist}</h3>
       <div className="details__year">{artPieceObject.year}</div>
       <div className="details_genre">{artPieceObject.genre}</div>
+      <div className="details_color">Color-Palette</div>
+      {artPieceObject.colors.map((color) => (
+        <ColorItem color={color}></ColorItem>
+      ))}
       <Link href="/art-pieces">Back</Link>
       <FavoriteButton
         isFavorite={isFavorite}
@@ -44,3 +48,9 @@ export default function ArtPieceDetails({
     </>
   );
 }
+const ColorItem = styled.div`
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+`;
