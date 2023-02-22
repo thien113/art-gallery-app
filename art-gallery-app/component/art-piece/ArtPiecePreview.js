@@ -9,6 +9,9 @@ export default function ArtPiecePreview({
   artist,
   slug,
 }) {
+  const isFavorite = JSON.parse(localStorage.getItem("art-pieces-info"))
+    .filter((obj) => obj.slug === slug)
+    .shift().isFavorite;
   return (
     <>
       <Link href={`/art-pieces/${slug}`}>

@@ -10,7 +10,12 @@ export default function CommentForm({ onSubmitHandler, slug }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="comment">Your Comment: </label>
-      <input type="text" name="comment" id="comment"></input>
+      <input
+        type="text"
+        name="comment"
+        id="comment"
+        title="dummyInputTitle"
+      ></input>
       <button type="submit">Create a Comment</button>
     </form>
   );

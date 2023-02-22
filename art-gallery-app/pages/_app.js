@@ -1,10 +1,8 @@
 import GlobalStyle from "../styles";
-import "./styles.css"
+import "./styles.css";
 import useSWR from "swr";
 import Layout from "../component/layout/Layout";
-import { useImmer } from "use-immer";
 import { useImmerLocalStorageState } from "./useImmerLocalStorageState";
-
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -45,20 +43,41 @@ export default function App({ Component, pageProps }) {
   function onSubmitHandler(slug, comment) {
     updateArtPiecesInfo((draft) => {
       const artPieceComment = draft.find((piece) => piece.slug === slug);
+      const [time, today] = timeAndDayHandler();
       if (!artPieceComment) {
         return [
           ...draft,
           {
             slug,
             isFavorite: false,
-            comments: [comment],
+            comments: [
+              {
+                comment: comment,
+                day: today,
+                time: time,
+              },
+            ],
           },
         ];
       } else {
-        artPieceComment.comments.push(comment);
+        artPieceComment.comments.push({
+          comment: comment,
+          day: today,
+          time: time,
+        });
         return draft;
       }
     });
+  }
+  function timeAndDayHandler() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = today.getFullYear();
+    let time = today.getHours() + ":" + today.getMinutes();
+
+    today = mm + "/" + dd + "/" + yyyy;
+    return [time, today];
   }
 
   return (

@@ -11,8 +11,12 @@ export default function ArtPieceDetails({
   onSubmitHandler,
 }) {
   const localItems = JSON.parse(localStorage.getItem("art-pieces-info"));
+  const isFavorite = JSON.parse(localStorage.getItem("art-pieces-info"))
+    .filter((obj) => obj.slug === id)
+    .shift().isFavorite;
 
   const artPieceObject = pieces.find((piece) => piece.slug === id);
+
   return (
     <>
       <Image
@@ -28,6 +32,7 @@ export default function ArtPieceDetails({
       <div className="details_genre">{artPieceObject.genre}</div>
       <Link href="/art-pieces">Back</Link>
       <FavoriteButton
+        isFavorite={isFavorite}
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
