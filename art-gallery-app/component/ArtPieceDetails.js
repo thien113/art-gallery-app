@@ -18,34 +18,36 @@ export default function ArtPieceDetails({
   const artPieceObject = pieces.find((piece) => piece.slug === id);
 
   return (
-    <>
+    <section className="details__container">
       <Image
-        className="details__container"
         src={artPieceObject.imageSource}
         width={500}
         height={400}
         alt={artPieceObject.slug}
       ></Image>
       <h2 className="details__title">{artPieceObject.title}</h2>
-      <h3 className="details__artist">{artPieceObject.artist}</h3>
-      <div className="details__year">{artPieceObject.year}</div>
-      <div className="details_genre">{artPieceObject.genre}</div>
-      <div className="details_color">Color-Palette</div>
-      {artPieceObject.colors.map((color) => (
-        <ColorItem color={color}></ColorItem>
-      ))}
-      <Link href="/art-pieces">Back</Link>
       <FavoriteButton
         isFavorite={isFavorite}
         slug={artPieceObject.slug}
         onToggleFavorite={onToggleFavorite}
       />
+      <h3 className="details__artist">{artPieceObject.artist}</h3>
+      <div className="details__year">{artPieceObject.year}</div>
+      <div className="details_genre">{artPieceObject.genre}</div>
+      <div className="details_color">
+        Color-Palette:
+        {artPieceObject.colors.map((color) => (
+          <ColorItem color={color}></ColorItem>
+        ))}
+      </div>
+      <Link href="/art-pieces">Back</Link>
+
       {localItems != false && <Comments id={artPieceObject.slug} />}
       <CommentForm
         slug={artPieceObject.slug}
         onSubmitHandler={onSubmitHandler}
       />
-    </>
+    </section>
   );
 }
 const ColorItem = styled.div`
