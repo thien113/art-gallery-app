@@ -1,6 +1,5 @@
-// import ArtPieces from "./ArtPieces";
-import { render, screen } from "@testing-library/react";
-import { ArtPieces } from "./ArtPieces";
+import { render } from "@testing-library/react";
+import Link from "next/link";
 
 const dummyArtPieces = [
   {
@@ -123,8 +122,22 @@ const dummyArtPieces = [
   },
 ];
 
-test("should render an unodered list of art Pieces with image, title, artist and slug", () => {
-  const { getByRole } = render(<ul pieces={dummyArtPieces} />);
-  const unorderdListOfArtPieces = getByRole("list");
-  expect(unorderdListOfArtPieces).toBeInTheDocument();
+describe("Testing the ArtPiecePreview", () => {
+  test("the link should be Rendered on screen", () => {
+    const { getByRole } = render(<Link href={dummyArtPieces} />);
+    const ImageAsLink = getByRole("link");
+    expect(ImageAsLink).toBeInTheDocument();
+  });
+
+  test("is the Heading to be distplayed as an H1", () => {
+    const { getByRole } = render(<h1>{dummyArtPieces.title}</h1>);
+    const TestTitelOfArtPreview = getByRole("heading");
+    expect(TestTitelOfArtPreview).toBeInTheDocument();
+  });
+
+  test("is the  Name of the Artist displayed as an H3", () => {
+    const { getByRole } = render(<h3>{dummyArtPieces.artist}</h3>);
+    const TestArtistOfArtPreview = getByRole("heading");
+    expect(TestArtistOfArtPreview).toBeInTheDocument();
+  });
 });

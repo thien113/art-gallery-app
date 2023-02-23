@@ -7,30 +7,34 @@ import { act } from "react-dom/test-utils";
 it("inputRenderCheck", () => {
   const { queryByTitle } = render(<CommentForm />);
   const input = queryByTitle("dummyInputTitle");
-  expect(input).toBeTruthy();
+  expect(input).toBeInTheDocument();
 });
 
-describe("is the Input from the CommentForm being rendered to the screen", () => {
-  test("should render the received Input", () => {
+describe("Testing the Input from the CommentForm", () => {
+  test("Input should render/ be visible on screen", () => {
     const { getByTitle } = render(<CommentForm />);
     const inputfield = getByTitle("dummyInputTitle");
-    expect(inputfield).toBeTruthy();
+    expect(inputfield).toBeInTheDocument();
   });
 
-  test("Is the SubmitButton being rendered?", () => {
-    const { getByDisplayValue } = render(<CommentForm />);
-    const btnSubmit = getByDisplayValue("Create a Comment");
+  test("Is the SubmitButton being rendered/ showen on the screen", () => {
+    const { queryByRole } = render(<CommentForm />);
+    const btnSubmit = queryByRole("button");
     expect(btnSubmit).toBeTruthy();
   });
 
   // <--- usinhg act()wrapper for State change to be rendered on screen, async-await for test input to be checked--!-->
-  test("change on Input is appearing in the Comments-Inputfield", async () => {
+  test("does the Input receive a Change on input", async () => {
     await act(async () => {
-      const { getByTitle } = render(<CommentForm />);
-      const inputfield = getByTitle("dummyInputTitle");
+      const { queryByRole } = render(<CommentForm />);
+      const InputForComments = queryByRole("input");
       const DummyText = "Is this Art? oder kann das weg...";
-      await fireEvent.change(inputfield, { target: { value: DummyText } });
-      expect(inputfield).toBe(DummyText);
+      fireEvent.change(InputForComments, {
+        target: { value: DummyText },
+      });
+      await waitFor(() => {
+        expect(InputForComments).toHaveTextContent(DummyText);
+      });
     });
   });
 });
@@ -44,13 +48,4 @@ describe("is the Input from the CommentForm being rendered to the screen", () =>
 //     expect(input.value).toBe("test Value Bli Bla Blubb")
 
 //   })
-// })
-
-// const dummyComment = "Is this art?"
-
-// test('should receive a text Input', () => {
-
-//  const input =
-
-//     export(input).toBeInTheDocument()
 // })

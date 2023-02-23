@@ -9,6 +9,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite, slug }) {
         className="button__favorite-unactive"
         width="50"
         height="50"
+        title="button__favorite-unactive"
         onClick={() => {
           onToggleFavorite(slug);
         }}
