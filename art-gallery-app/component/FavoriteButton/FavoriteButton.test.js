@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import FavoriteButton from "./FavoriteButton";
 
 test.todo("checkButtonRendered"),
